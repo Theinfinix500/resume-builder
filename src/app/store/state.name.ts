@@ -1,0 +1,1 @@
+export const RESUME_STATE_NAME = 'resumes';
