@@ -8,11 +8,12 @@ import { ResumeState } from './store/state/resume.state';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { LoadResumeList } from './store/actions/resume.actions';
 import { ResumesFacade } from './store/facade/resumes.facade';
+import { SimpleTemplateComponent } from './templates/simple-template/simple-template.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ButtonModule, AsyncPipe, JsonPipe],
+  imports: [RouterOutlet, ButtonModule, AsyncPipe, JsonPipe, SimpleTemplateComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -22,5 +23,9 @@ export class AppComponent {
 
   loadResumes() {
     this.resumesFacade.loadResumes();
+  }
+
+  print() {
+    this.resumesFacade.print();
   }
 }

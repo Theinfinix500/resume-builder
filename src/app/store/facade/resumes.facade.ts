@@ -3,7 +3,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Resume } from '../../models/resume.model';
 import { ResumeState } from '../state/resume.state';
-import { LoadResumeList } from '../actions/resume.actions';
+import { LoadResumeList, PrintResume } from '../actions/resume.actions';
 
 @Injectable({ providedIn: 'root' })
 export class ResumesFacade {
@@ -12,5 +12,9 @@ export class ResumesFacade {
 
   loadResumes() {
     this.store.dispatch(LoadResumeList);
+  }
+
+  print() {
+    this.store.dispatch(PrintResume);
   }
 }
