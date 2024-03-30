@@ -1,31 +1,13 @@
-<h1>Resume Builder</h1>
-<div class="grid">
-  <div class="col-12">
-    {{ resumes$ | async | json }}
-  </div>
-</div>
-<div class="grid">
-  <div class="col-12 md:col-6">
-    <div class="card">
-      <h5>Default</h5>
-      <div class="flex flex-wrap gap-2">
-        <button
-          pButton
-          pRipple
-          label="Load"
-          (click)="loadResumes()"
-        ></button>
-
-        <button
-          pButton
-          pRipple
-          label="Print"
-          (click)="print()"
-        ></button>
-      </div>
+<div class="wrapper">
+  <div class="controls">
+    <div class="sidebar">
+      <rb-sidebar></rb-sidebar>
+    </div>
+    <div class="form-container">
+      <rb-form-wrapper></rb-form-wrapper>
     </div>
   </div>
-  <div class="col-12">
-    <rb-simple-template id="template"></rb-simple-template>
+  <div class="resume">
+    <rb-resume></rb-resume>
   </div>
 </div>
