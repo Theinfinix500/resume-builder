@@ -60,6 +60,6 @@ button {
   text-align: center;
   border-radius: 2px;
   padding: 4px 0;
-  background-color: var(--section-resume-bg);
-  color: var(--resume-accent);
+  background-color: var(--section-resume-bg, rgba(14,55,78,.07));
+  color: var(--resume-accent, #0e374e);
 }
