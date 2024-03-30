@@ -48,7 +48,7 @@ export const saveAsPdf = (pageRef: HTMLElement, quality = 100, type = 'a4') => {
           canvasWidth,
           canvasHeight,
           undefined,
-          'SLOW'
+          'SLOW',
         );
         doc.save(`RxResume_${Date.now()}.pdf`);
         // saveAsPdfTimer = null;

@@ -1,4 +1,14 @@
 <div class="form-container">
+  <div class="download-btn">
+    <p-button
+      icon="pi pi-download"
+      label="Download"
+      [rounded]="true"
+      [outlined]="true"
+      severity="secondary"
+      (onClick)="download()"
+    ></p-button>
+  </div>
   <div class="personal-details">
     <rb-personal-details></rb-personal-details>
   </div>

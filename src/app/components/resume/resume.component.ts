@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { ExperienceSectionComponent } from './experience-section/experience-section.component';
 import { EducationSectionComponent } from './education-section/education-section.component';
 import { PersonalInfoSectionComponent } from './personal-info-section/personal-info-section.component';
@@ -13,6 +13,6 @@ import { PersonalInfoSectionComponent } from './personal-info-section/personal-i
   ],
   templateUrl: './resume.component.html',
   styleUrl: './resume.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class ResumeComponent {}

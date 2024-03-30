@@ -8,7 +8,7 @@ export class PrintService {
   constructor() {}
 
   printTemplate() {
-    const template = document.getElementById('template');
+    const template = document.getElementById('resumePages');
     saveAsPdf(template as HTMLElement);
   }
 }
