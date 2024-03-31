@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { EducationForm } from '../../../store/state/resume.state';
 
 @Component({
   selector: 'rb-education-section',
@@ -6,8 +7,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
   imports: [],
   templateUrl: './education-section.component.html',
   styleUrl: './education-section.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class EducationSectionComponent {
-
+  @Input() educationDetails: EducationForm | undefined;
 }

@@ -2,7 +2,12 @@ import { inject, Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { Resume } from '../../models/resume.model';
 import { RESUME_STATE_NAME } from '../state.name';
-import { LoadResumeList, PrintResume } from '../actions/resume.actions';
+import {
+  HideEducationForm,
+  LoadResumeList,
+  PrintResume,
+  ShowEducationForm,
+} from '../actions/resume.actions';
 import { PrintService } from '../../services/print.service';
 
 export interface FormStatus<T> {
@@ -20,15 +25,29 @@ export interface PersonalDetails {
   phoneNumber: string;
 }
 
+export interface EducationForm {
+  school: string;
+  degree: string;
+  startDate: string;
+  endDate: string;
+  location: string;
+}
+
 export interface ResumeForm {
   personalDetails: FormStatus<PersonalDetails>;
   // TODO should change these to a correct type
-  experience: {};
-  education: {};
+  experienceForm: {};
+  educationForm: FormStatus<EducationForm>;
+}
+
+export interface ResumeUiState {
+  isEducationFormVisible: boolean;
+  isExperienceFormVisible: boolean;
 }
 export interface ResumeStateModel {
   resumes: Resume[];
   infos: ResumeForm;
+  ui: ResumeUiState;
 }
 
 @State<ResumeStateModel>({
@@ -47,8 +66,23 @@ export interface ResumeStateModel {
         status: '',
         errors: {},
       },
-      experience: {},
-      education: {},
+      educationForm: {
+        model: {
+          school: 'FST Settat',
+          degree: 'Master',
+          startDate: 'June 2021',
+          endDate: 'June 2023',
+          location: 'Casablanca, Morocco',
+        },
+        dirty: false,
+        status: '',
+        errors: {},
+      },
+      experienceForm: {},
+    },
+    ui: {
+      isEducationFormVisible: false,
+      isExperienceFormVisible: false,
     },
   },
 })
@@ -66,6 +100,16 @@ export class ResumeState {
     return state.infos.personalDetails.model;
   }
 
+  @Selector()
+  static educationDetails(state: ResumeStateModel): EducationForm | undefined {
+    return state.infos.educationForm.model;
+  }
+
+  @Selector()
+  static isEducationFormVisible(state: ResumeStateModel): boolean {
+    return state.ui.isEducationFormVisible;
+  }
+
   @Action(LoadResumeList)
   loadAllResumes({ getState, setState }: StateContext<ResumeStateModel>) {
     setState({
@@ -81,5 +125,21 @@ export class ResumeState {
   @Action(PrintResume)
   printResume() {
     this.printService.printTemplate();
+  }
+
+  @Action(ShowEducationForm)
+  showEducationForm({ getState, setState }: StateContext<ResumeStateModel>) {
+    setState({
+      ...getState(),
+      ui: { ...getState().ui, isEducationFormVisible: true },
+    });
+  }
+
+  @Action(HideEducationForm)
+  hideEducationForm({ getState, setState }: StateContext<ResumeStateModel>) {
+    setState({
+      ...getState(),
+      ui: { ...getState().ui, isEducationFormVisible: false },
+    });
   }
 }

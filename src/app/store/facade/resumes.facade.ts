@@ -2,8 +2,17 @@ import { inject, Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Resume } from '../../models/resume.model';
-import { PersonalDetails, ResumeState } from '../state/resume.state';
-import { LoadResumeList, PrintResume } from '../actions/resume.actions';
+import {
+  EducationForm,
+  PersonalDetails,
+  ResumeState,
+} from '../state/resume.state';
+import {
+  HideEducationForm,
+  LoadResumeList,
+  PrintResume,
+  ShowEducationForm,
+} from '../actions/resume.actions';
 
 @Injectable({ providedIn: 'root' })
 export class ResumesFacade {
@@ -13,6 +22,11 @@ export class ResumesFacade {
   @Select(ResumeState.personalDetails) personalDetails$!: Observable<
     PersonalDetails | undefined
   >;
+  @Select(ResumeState.educationDetails) educationDetails$!: Observable<
+    EducationForm | undefined
+  >;
+  @Select(ResumeState.isEducationFormVisible)
+  isEducationFormVisible$!: Observable<boolean>;
 
   loadResumes() {
     this.store.dispatch(LoadResumeList);
@@ -20,5 +34,13 @@ export class ResumesFacade {
 
   print() {
     this.store.dispatch(PrintResume);
+  }
+
+  showEducationForm() {
+    this.store.dispatch(ShowEducationForm);
+  }
+
+  hideEducationForm() {
+    this.store.dispatch(HideEducationForm);
   }
 }

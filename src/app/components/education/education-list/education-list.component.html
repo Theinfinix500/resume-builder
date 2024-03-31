@@ -1,22 +1,27 @@
 <div class="form-card">
   <h2>Education</h2>
-  <div class="list">
-    <div class="row">
-      <span>London City University</span
-      ><i class="pi pi-eye text-blue-500 text-xl"></i>
+  @if (isEducationFormVisible$ | async) {
+    <rb-education-form></rb-education-form>
+  } @else {
+    <div class="list">
+      <div class="row" (click)="showForm()">
+        <span>London City University</span
+        ><i class="pi pi-eye text-blue-500 text-xl"></i>
+      </div>
+      <div class="row" (click)="showForm()">
+        <span>Another University</span
+        ><i class="pi pi-eye-slash text-blue-500 text-xl"></i>
+      </div>
     </div>
-    <div class="row">
-      <span>Another University</span
-      ><i class="pi pi-eye-slash text-blue-500 text-xl"></i>
+    <div class="command">
+      <p-button
+        label="Education"
+        icon="pi pi-plus"
+        [rounded]="true"
+        [outlined]="true"
+        severity="secondary"
+        (onClick)="showForm()"
+      ></p-button>
     </div>
-  </div>
-  <div class="command">
-    <p-button
-      label="Education"
-      icon="pi pi-plus"
-      [rounded]="true"
-      [outlined]="true"
-      severity="secondary"
-    ></p-button>
-  </div>
+  }
 </div>

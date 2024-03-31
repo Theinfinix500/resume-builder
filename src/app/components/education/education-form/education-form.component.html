@@ -1,1 +1,69 @@
-<p>education-form works!</p>
+<form
+  [formGroup]="educationForm"
+  ngxsForm="resumes.infos.educationForm"
+  [ngxsFormDebounce]="-1"
+  class="education-form section-form"
+>
+  <div class="input-group">
+    <label for="school-name"><span class="label-text">School</span></label
+    ><input
+      type="text"
+      id="school-name"
+      placeholder="Enter school / university"
+      data-key="schoolName"
+      formControlName="school"
+    />
+  </div>
+  <div class="input-group">
+    <label for="degree"><span class="label-text">Degree</span></label
+    ><input
+      type="text"
+      id="degree"
+      placeholder="Enter Degree / Field Of Study"
+      data-key="degree"
+      formControlName="degree"
+    />
+  </div>
+  <div class="dates-group">
+    <div class="input-group">
+      <label for="date"><span class="label-text">Start Date</span></label
+      ><input
+        type="text"
+        id="date"
+        placeholder="Enter Start Date"
+        data-key="startDate"
+        formControlName="startDate"
+      />
+    </div>
+    <div class="input-group">
+      <label for="date"><span class="label-text">End Date</span></label
+      ><input
+        type="text"
+        id="date"
+        placeholder="Enter End Date"
+        data-key="endDate"
+        formControlName="endDate"
+      />
+    </div>
+  </div>
+  <div class="input-group">
+    <label for="location"
+      ><span class="label-text">Location</span
+      ><span class="optional-text">optional</span></label
+    ><input
+      type="text"
+      id="location"
+      placeholder="Enter Location"
+      data-key="location"
+      formControlName="location"
+    />
+  </div>
+  <div class="buttons">
+    <button class="delete" type="button">
+      <i class="fa-solid fa-trash"></i>Delete
+    </button>
+    <div class="main-buttons">
+      <button class="cancel" type="button" (click)="hideForm()">Close</button>
+    </div>
+  </div>
+</form>

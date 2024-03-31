@@ -2,12 +2,15 @@
   <h3 class="header-text">Education</h3>
   <div class="education-info">
     <div class="education-info-group">
-      <p class="dates">08/2020<span> – </span>present</p>
-      <p>New York City, US</p>
+      <p class="dates">
+        {{ educationDetails?.startDate }}<span> – </span
+        >{{ educationDetails?.endDate }}
+      </p>
+      <p>{{ educationDetails?.location }}</p>
     </div>
     <div class="education-info-group">
-      <p class="education-info-schoolName">London City University</p>
-      <p class="education-info-degree">Bachelors in Economics</p>
+      <p class="education-info-schoolName">{{ educationDetails?.school }}</p>
+      <p class="education-info-degree">{{ educationDetails?.degree }}</p>
     </div>
   </div>
 </div>

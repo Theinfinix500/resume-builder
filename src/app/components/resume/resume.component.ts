@@ -3,7 +3,7 @@ import { ExperienceSectionComponent } from './experience-section/experience-sect
 import { EducationSectionComponent } from './education-section/education-section.component';
 import { PersonalInfoSectionComponent } from './personal-info-section/personal-info-section.component';
 import { ResumesFacade } from '../../store/facade/resumes.facade';
-import { PersonalDetails } from '../../store/state/resume.state';
+import { EducationForm, PersonalDetails } from '../../store/state/resume.state';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
@@ -25,4 +25,7 @@ export class ResumeComponent {
 
   personalDetails$: Observable<PersonalDetails | undefined> =
     this.resumesFacade.personalDetails$;
+
+  educationDetails$: Observable<EducationForm | undefined> =
+    this.resumesFacade.educationDetails$;
 }
