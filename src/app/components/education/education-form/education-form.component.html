@@ -2,68 +2,72 @@
   [formGroup]="educationForm"
   ngxsForm="resumes.infos.educationForm"
   [ngxsFormDebounce]="-1"
-  class="education-form section-form"
+  class="p-fluid"
 >
-  <div class="input-group">
+  <div class="field">
     <label for="school-name"><span class="label-text">School</span></label
     ><input
       type="text"
+      pInputText
       id="school-name"
       placeholder="Enter school / university"
-      data-key="schoolName"
       formControlName="school"
     />
   </div>
-  <div class="input-group">
+  <div class="field">
     <label for="degree"><span class="label-text">Degree</span></label
     ><input
       type="text"
+      pInputText
       id="degree"
       placeholder="Enter Degree / Field Of Study"
-      data-key="degree"
       formControlName="degree"
     />
   </div>
   <div class="dates-group">
-    <div class="input-group">
+    <div class="field">
       <label for="date"><span class="label-text">Start Date</span></label
       ><input
         type="text"
+        pInputText
         id="date"
         placeholder="Enter Start Date"
-        data-key="startDate"
         formControlName="startDate"
       />
     </div>
-    <div class="input-group">
+    <div class="field">
       <label for="date"><span class="label-text">End Date</span></label
       ><input
         type="text"
+        pInputText
         id="date"
         placeholder="Enter End Date"
-        data-key="endDate"
         formControlName="endDate"
       />
     </div>
   </div>
-  <div class="input-group">
-    <label for="location"
-      ><span class="label-text">Location</span
-      ><span class="optional-text">optional</span></label
+  <div class="field">
+    <label for="location"><span class="label-text">Location</span></label
     ><input
       type="text"
+      pInputText
       id="location"
       placeholder="Enter Location"
-      data-key="location"
       formControlName="location"
     />
   </div>
   <div class="buttons">
-    <button class="delete" type="button">
-      <i class="fa-solid fa-trash"></i>Delete
-    </button>
-    <div class="main-buttons">
-      <button class="cancel" type="button" (click)="hideForm()">Close</button>
-    </div>
+    <p-button
+      label="Delete"
+      icon="pi pi-trash"
+      [outlined]="true"
+      severity="danger"
+    ></p-button>
+    <p-button
+      label="Close"
+      [outlined]="true"
+      severity="secondary"
+      (onClick)="hideForm()"
+    ></p-button>
   </div>
 </form>
