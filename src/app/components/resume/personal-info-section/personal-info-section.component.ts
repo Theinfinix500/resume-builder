@@ -1,4 +1,5 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { PersonalDetails } from '../../../store/state/resume.state';
 
 @Component({
   selector: 'rb-personal-info-section',
@@ -6,8 +7,8 @@ import { Component, ViewEncapsulation } from '@angular/core';
   imports: [],
   templateUrl: './personal-info-section.component.html',
   styleUrl: './personal-info-section.component.scss',
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class PersonalInfoSectionComponent {
-
+  @Input() personalDetails: PersonalDetails | undefined;
 }
