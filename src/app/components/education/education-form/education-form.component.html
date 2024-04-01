@@ -1,6 +1,6 @@
 <form
   [formGroup]="educationForm"
-  ngxsForm="resumes.infos.educationForm"
+  ngxsForm="resumes.sections.education.form"
   [ngxsFormDebounce]="-1"
   class="p-fluid"
 >
@@ -57,12 +57,17 @@
     />
   </div>
   <div class="buttons">
-    <p-button
-      label="Delete"
-      icon="pi pi-trash"
-      [outlined]="true"
-      severity="danger"
-    ></p-button>
+    @if (isEditMode$ | async) {
+      <p-button
+        label="Delete"
+        icon="pi pi-trash"
+        [outlined]="true"
+        severity="danger"
+      ></p-button>
+    } @else {
+      <p-button label="Save" [outlined]="true"></p-button>
+    }
+
     <p-button
       label="Close"
       [outlined]="true"

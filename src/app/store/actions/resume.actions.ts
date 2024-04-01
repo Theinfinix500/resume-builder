@@ -6,8 +6,13 @@ export class PrintResume {
   static readonly type = '[RESUME] PrintResume';
 }
 
-export class ShowEducationForm {
-  static readonly type = '[RESUME UI] ShowEducationForm';
+export class OpenEducationNewEntry {
+  static readonly type = '[RESUME UI] AddNewEducation';
+}
+export class OpenEducationEdit {
+  static readonly type = '[RESUME UI] EditEducation';
+
+  constructor(public educationId: number) {}
 }
 
 export class HideEducationForm {

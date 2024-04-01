@@ -1,14 +1,17 @@
 import { inject, Injectable } from '@angular/core';
-import { Action, Selector, State, StateContext } from '@ngxs/store';
+import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Resume } from '../../models/resume.model';
 import { RESUME_STATE_NAME } from '../state.name';
 import {
   HideEducationForm,
   LoadResumeList,
+  OpenEducationEdit,
+  OpenEducationNewEntry,
   PrintResume,
-  ShowEducationForm,
 } from '../actions/resume.actions';
 import { PrintService } from '../../services/print.service';
+import { ResumesFacade } from '../facade/resumes.facade';
+import { ResetForm, UpdateFormValue } from '@ngxs/form-plugin';
 
 export interface FormStatus<T> {
   model?: T;
@@ -33,62 +36,136 @@ export interface EducationForm {
   location: string;
 }
 
-export interface ResumeForm {
-  personalDetails: FormStatus<PersonalDetails>;
-  // TODO should change these to a correct type
-  experienceForm: {};
-  educationForm: FormStatus<EducationForm>;
+export interface ExperienceForm {
+  companyName: string;
+  positionTitle: string;
+  startDate: string;
+  endDate: string;
+  location: string;
+  description: string;
 }
 
-export interface ResumeUiState {
-  isEducationFormVisible: boolean;
+export interface ResumeSection<T, V = void, W = void> {
+  form: T;
+  ui?: W;
+  list?: V;
+}
+
+export interface Education extends EducationForm {
+  id: number;
+}
+
+export interface Experience extends ExperienceForm {
+  id: number;
+}
+
+export interface EducationUiState {
+  isEducationFormVisible?: boolean;
+  isEditMode?: boolean;
+}
+export interface ExperienceUiState {
   isExperienceFormVisible: boolean;
 }
+
+export interface ResumeSections {
+  personalDetails: ResumeSection<FormStatus<PersonalDetails>>;
+  education: ResumeSection<
+    FormStatus<EducationForm>,
+    Education[],
+    EducationUiState
+  >;
+  experience: ResumeSection<
+    FormStatus<ExperienceForm>,
+    Experience[],
+    ExperienceUiState
+  >;
+}
+
 export interface ResumeStateModel {
   resumes: Resume[];
-  infos: ResumeForm;
-  ui: ResumeUiState;
+  sections: ResumeSections;
 }
 
 @State<ResumeStateModel>({
   name: RESUME_STATE_NAME,
   defaults: {
     resumes: [],
-    infos: {
+    sections: {
       personalDetails: {
-        model: {
-          fullName: '',
-          email: '',
-          address: '',
-          phoneNumber: '',
+        form: {
+          model: {
+            fullName: '',
+            email: '',
+            address: '',
+            phoneNumber: '',
+          },
+          dirty: false,
+          status: '',
+          errors: {},
         },
-        dirty: false,
-        status: '',
-        errors: {},
       },
-      educationForm: {
-        model: {
-          school: 'FST Settat',
-          degree: 'Master',
-          startDate: 'June 2021',
-          endDate: 'June 2023',
-          location: 'Casablanca, Morocco',
+      education: {
+        form: {
+          model: {
+            school: 'FST Settat',
+            degree: 'Master',
+            startDate: 'June 2021',
+            endDate: 'June 2023',
+            location: 'Casablanca, Morocco',
+          },
+          dirty: false,
+          status: '',
+          errors: {},
         },
-        dirty: false,
-        status: '',
-        errors: {},
+        list: [
+          {
+            id: 1,
+            school: 'London City University',
+            degree: 'Master',
+            startDate: 'June 2021',
+            endDate: 'June 2023',
+            location: 'Casablanca, Morocco',
+          },
+          {
+            id: 2,
+            school: 'Another University',
+            degree: 'Master',
+            startDate: 'June 2021',
+            endDate: 'June 2023',
+            location: 'Casablanca, Morocco',
+          },
+        ],
+        ui: {
+          isEducationFormVisible: false,
+          isEditMode: false,
+        },
       },
-      experienceForm: {},
-    },
-    ui: {
-      isEducationFormVisible: false,
-      isExperienceFormVisible: false,
+      experience: {
+        form: {
+          model: {
+            companyName: '',
+            positionTitle: '',
+            startDate: '',
+            endDate: '',
+            location: '',
+            description: '',
+          },
+          dirty: false,
+          status: '',
+          errors: {},
+        },
+        list: [],
+        ui: {
+          isExperienceFormVisible: false,
+        },
+      },
     },
   },
 })
 @Injectable()
 export class ResumeState {
   printService: PrintService = inject(PrintService);
+  store: Store = inject(Store);
 
   @Selector()
   static resumes(state: ResumeStateModel) {
@@ -97,17 +174,22 @@ export class ResumeState {
 
   @Selector()
   static personalDetails(state: ResumeStateModel): PersonalDetails | undefined {
-    return state.infos.personalDetails.model;
+    return state.sections.personalDetails.form.model;
   }
 
   @Selector()
-  static educationDetails(state: ResumeStateModel): EducationForm | undefined {
-    return state.infos.educationForm.model;
+  static educationList(state: ResumeStateModel): Education[] | undefined {
+    return state.sections.education.list;
   }
 
   @Selector()
-  static isEducationFormVisible(state: ResumeStateModel): boolean {
-    return state.ui.isEducationFormVisible;
+  static isEducationFormVisible(state: ResumeStateModel): boolean | undefined {
+    return state.sections.education?.ui?.isEducationFormVisible;
+  }
+
+  @Selector()
+  static isEditMode(state: ResumeStateModel): boolean | undefined {
+    return state.sections.education?.ui?.isEditMode;
   }
 
   @Action(LoadResumeList)
@@ -127,11 +209,54 @@ export class ResumeState {
     this.printService.printTemplate();
   }
 
-  @Action(ShowEducationForm)
-  showEducationForm({ getState, setState }: StateContext<ResumeStateModel>) {
+  @Action(OpenEducationNewEntry)
+  openEducationNewEntry({
+    getState,
+    setState,
+  }: StateContext<ResumeStateModel>) {
+    this.resetEducationForm();
     setState({
       ...getState(),
-      ui: { ...getState().ui, isEducationFormVisible: true },
+      sections: {
+        ...getState().sections,
+        education: {
+          ...getState().sections.education,
+          ui: {
+            ...getState().sections.education.ui,
+            isEducationFormVisible: true,
+            isEditMode: false,
+          },
+        },
+      },
+    });
+  }
+
+  @Action(OpenEducationEdit)
+  openEducationEdit(
+    { getState, setState }: StateContext<ResumeStateModel>,
+    { educationId }: OpenEducationEdit,
+  ) {
+    /**
+     TODO load the education by id
+     then update the form with appropriate data
+     *  */
+    const educationToBeEdited = getState().sections.education.list?.find(
+      (education) => education.id === educationId,
+    );
+    this.updateEducationForm(educationToBeEdited);
+    setState({
+      ...getState(),
+      sections: {
+        ...getState().sections,
+        education: {
+          ...getState().sections.education,
+          ui: {
+            ...getState().sections.education.ui,
+            isEducationFormVisible: true,
+            isEditMode: true,
+          },
+        },
+      },
     });
   }
 
@@ -139,7 +264,31 @@ export class ResumeState {
   hideEducationForm({ getState, setState }: StateContext<ResumeStateModel>) {
     setState({
       ...getState(),
-      ui: { ...getState().ui, isEducationFormVisible: false },
+      sections: {
+        ...getState().sections,
+        education: {
+          ...getState().sections.education,
+          ui: {
+            ...getState().sections.education.ui,
+            isEducationFormVisible: false,
+          },
+        },
+      },
     });
+  }
+
+  private resetEducationForm() {
+    this.store.dispatch(
+      new ResetForm({ path: 'resumes.sections.education.form' }),
+    );
+  }
+
+  private updateEducationForm(education?: Education) {
+    this.store.dispatch(
+      new UpdateFormValue({
+        path: 'resumes.sections.education.form',
+        value: education,
+      }),
+    );
   }
 }

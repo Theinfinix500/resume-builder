@@ -18,7 +18,11 @@ export class EducationListComponent {
   isEducationFormVisible$: Observable<boolean> =
     this.resumesFacade.isEducationFormVisible$;
 
-  showForm() {
-    this.resumesFacade.showEducationForm();
+  addNewEducation() {
+    this.resumesFacade.openEducationNewEntry();
+  }
+
+  editEducation(educationId: number) {
+    this.resumesFacade.openEducationEdit(educationId);
   }
 }

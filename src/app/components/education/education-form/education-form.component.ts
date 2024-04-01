@@ -25,6 +25,7 @@ export class EducationFormComponent {
   resumesFacade: ResumesFacade = inject(ResumesFacade);
   fb: FormBuilder = inject(FormBuilder);
   educationForm!: FormGroup;
+  isEditMode$: Observable<boolean> = this.resumesFacade.isEditMode$;
 
   ngOnInit(): void {
     this.initForm();

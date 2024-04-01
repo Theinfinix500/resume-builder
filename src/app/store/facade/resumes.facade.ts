@@ -3,6 +3,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Resume } from '../../models/resume.model';
 import {
+  Education,
   EducationForm,
   PersonalDetails,
   ResumeState,
@@ -10,9 +11,11 @@ import {
 import {
   HideEducationForm,
   LoadResumeList,
+  OpenEducationEdit,
+  OpenEducationNewEntry,
   PrintResume,
-  ShowEducationForm,
 } from '../actions/resume.actions';
+import { ResetForm } from '@ngxs/form-plugin';
 
 @Injectable({ providedIn: 'root' })
 export class ResumesFacade {
@@ -22,11 +25,14 @@ export class ResumesFacade {
   @Select(ResumeState.personalDetails) personalDetails$!: Observable<
     PersonalDetails | undefined
   >;
-  @Select(ResumeState.educationDetails) educationDetails$!: Observable<
-    EducationForm | undefined
+  @Select(ResumeState.educationList) educationList$!: Observable<
+    Education[] | undefined
   >;
   @Select(ResumeState.isEducationFormVisible)
   isEducationFormVisible$!: Observable<boolean>;
+
+  @Select(ResumeState.isEditMode)
+  isEditMode$!: Observable<boolean>;
 
   loadResumes() {
     this.store.dispatch(LoadResumeList);
@@ -36,8 +42,12 @@ export class ResumesFacade {
     this.store.dispatch(PrintResume);
   }
 
-  showEducationForm() {
-    this.store.dispatch(ShowEducationForm);
+  openEducationNewEntry() {
+    this.store.dispatch(OpenEducationNewEntry);
+  }
+
+  openEducationEdit(educationId: number) {
+    this.store.dispatch(new OpenEducationEdit(educationId));
   }
 
   hideEducationForm() {
