@@ -4,6 +4,7 @@ import { EducationFormComponent } from '../education-form/education-form.compone
 import { ResumesFacade } from '../../../store/facade/resumes.facade';
 import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
+import { Education } from '../../../store/state/resume.state';
 
 @Component({
   selector: 'rb-education-list',
@@ -17,6 +18,8 @@ export class EducationListComponent {
 
   isEducationFormVisible$: Observable<boolean> =
     this.resumesFacade.isEducationFormVisible$;
+  educationList$: Observable<Education[] | undefined> =
+    this.resumesFacade.educationList$;
 
   addNewEducation() {
     this.resumesFacade.openEducationNewEntry();

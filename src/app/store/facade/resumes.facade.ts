@@ -2,20 +2,15 @@ import { inject, Injectable } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Resume } from '../../models/resume.model';
+import { Education, PersonalDetails, ResumeState } from '../state/resume.state';
 import {
-  Education,
-  EducationForm,
-  PersonalDetails,
-  ResumeState,
-} from '../state/resume.state';
-import {
+  AddEducation,
   HideEducationForm,
   LoadResumeList,
   OpenEducationEdit,
   OpenEducationNewEntry,
   PrintResume,
 } from '../actions/resume.actions';
-import { ResetForm } from '@ngxs/form-plugin';
 
 @Injectable({ providedIn: 'root' })
 export class ResumesFacade {
@@ -48,6 +43,10 @@ export class ResumesFacade {
 
   openEducationEdit(educationId: number) {
     this.store.dispatch(new OpenEducationEdit(educationId));
+  }
+
+  addEducation() {
+    this.store.dispatch(AddEducation);
   }
 
   hideEducationForm() {

@@ -3,6 +3,7 @@ import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Resume } from '../../models/resume.model';
 import { RESUME_STATE_NAME } from '../state.name';
 import {
+  AddEducation,
   HideEducationForm,
   LoadResumeList,
   OpenEducationEdit,
@@ -231,6 +232,36 @@ export class ResumeState {
     });
   }
 
+  @Action(AddEducation)
+  addEducation({ getState, setState }: StateContext<ResumeStateModel>) {
+    const educationNewEntry = getState().sections.education.form
+      .model as Education;
+    const educationList =
+      (getState().sections.education.list as Education[]) || [];
+
+    this.resetEducationForm();
+    setState({
+      ...getState(),
+      sections: {
+        ...getState().sections,
+        education: {
+          ...getState().sections.education,
+          ui: {
+            ...getState().sections.education.ui,
+            // should make a seperate dispatch to hide the form
+            isEducationFormVisible: false,
+            isEditMode: false,
+          },
+          list: [
+            ...educationList,
+            // TODO should add id generator
+            { ...educationNewEntry, id: new Date().getTime() },
+          ],
+        },
+      },
+    });
+  }
+
   @Action(OpenEducationEdit)
   openEducationEdit(
     { getState, setState }: StateContext<ResumeStateModel>,
@@ -244,6 +275,7 @@ export class ResumeState {
       (education) => education.id === educationId,
     );
     this.updateEducationForm(educationToBeEdited);
+    // TODO should solve the getState mess
     setState({
       ...getState(),
       sections: {

@@ -15,6 +15,10 @@ export class OpenEducationEdit {
   constructor(public educationId: number) {}
 }
 
+export class AddEducation {
+  static readonly type = '[RESUME UI] AddEducation';
+}
+
 export class HideEducationForm {
   static readonly type = '[RESUME UI] HideEducationForm';
 }

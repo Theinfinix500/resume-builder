@@ -44,4 +44,8 @@ export class EducationFormComponent {
   hideForm() {
     this.resumesFacade.hideEducationForm();
   }
+
+  addEducation() {
+    this.resumesFacade.addEducation();
+  }
 }

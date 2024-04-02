@@ -4,14 +4,12 @@
     <rb-education-form></rb-education-form>
   } @else {
     <div class="list">
-      <div class="row" (click)="editEducation(1)">
-        <span>London City University</span
-        ><i class="pi pi-eye text-blue-500 text-xl"></i>
-      </div>
-      <div class="row" (click)="editEducation(2)">
-        <span>Another University</span
-        ><i class="pi pi-eye-slash text-blue-500 text-xl"></i>
-      </div>
+      @for (education of educationList$ | async; track education.id) {
+        <div class="row" (click)="editEducation(education.id)">
+          <span>{{ education.school }}</span
+          ><i class="pi pi-eye text-blue-500 text-xl"></i>
+        </div>
+      }
     </div>
     <div class="command">
       <p-button
