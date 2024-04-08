@@ -1,10 +1,17 @@
 import { inject, Injectable } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import {
+  Actions,
+  ofAction,
+  ofActionDispatched,
+  Select,
+  Store,
+} from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Resume } from '../../models/resume.model';
 import { Education, PersonalDetails, ResumeState } from '../state/resume.state';
 import {
-  AddEducation,
+  SaveEducation,
+  EditEducation,
   HideEducationForm,
   LoadResumeList,
   OpenEducationEdit,
@@ -15,6 +22,27 @@ import {
 @Injectable({ providedIn: 'root' })
 export class ResumesFacade {
   store: Store = inject(Store);
+  actions$: Actions = inject(Actions);
+
+  constructor() {
+    this.actions$
+      .pipe(
+        ofActionDispatched(
+          OpenEducationNewEntry,
+          OpenEducationEdit,
+          HideEducationForm,
+        ),
+      )
+      .subscribe(action => {
+        // TODO check how to implement this using actions$
+        switch(action) {
+          case action instanceof OpenEducationNewEntry:
+            // isEducationFormVisible: true,
+            // isEditMode: false,
+            return;
+        }
+      });
+  }
 
   @Select(ResumeState.resumes) resumes$!: Observable<Resume[]>;
   @Select(ResumeState.personalDetails) personalDetails$!: Observable<
@@ -23,6 +51,10 @@ export class ResumesFacade {
   @Select(ResumeState.educationList) educationList$!: Observable<
     Education[] | undefined
   >;
+  @Select(ResumeState.educationFormDetails) educationFormDetails$!: Observable<
+    Education[] | undefined
+  >;
+
   @Select(ResumeState.isEducationFormVisible)
   isEducationFormVisible$!: Observable<boolean>;
 
@@ -41,12 +73,16 @@ export class ResumesFacade {
     this.store.dispatch(OpenEducationNewEntry);
   }
 
-  openEducationEdit(educationId: number) {
+  openEducationEdit(educationId?: number) {
     this.store.dispatch(new OpenEducationEdit(educationId));
   }
 
-  addEducation() {
-    this.store.dispatch(AddEducation);
+  saveEducation() {
+    this.store.dispatch(SaveEducation);
+  }
+
+  editEducation() {
+    this.store.dispatch(EditEducation);
   }
 
   hideEducationForm() {

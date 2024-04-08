@@ -25,7 +25,7 @@ export class EducationListComponent {
     this.resumesFacade.openEducationNewEntry();
   }
 
-  editEducation(educationId: number) {
+  editEducation(educationId?: number) {
     this.resumesFacade.openEducationEdit(educationId);
   }
 }

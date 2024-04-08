@@ -3,7 +3,7 @@ import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { Resume } from '../../models/resume.model';
 import { RESUME_STATE_NAME } from '../state.name';
 import {
-  AddEducation,
+  SaveEducation,
   HideEducationForm,
   LoadResumeList,
   OpenEducationEdit,
@@ -11,8 +11,8 @@ import {
   PrintResume,
 } from '../actions/resume.actions';
 import { PrintService } from '../../services/print.service';
-import { ResumesFacade } from '../facade/resumes.facade';
 import { ResetForm, UpdateFormValue } from '@ngxs/form-plugin';
+import { produce } from 'immer';
 
 export interface FormStatus<T> {
   model?: T;
@@ -30,11 +30,12 @@ export interface PersonalDetails {
 }
 
 export interface EducationForm {
-  school: string;
-  degree: string;
-  startDate: string;
-  endDate: string;
-  location: string;
+  id?: number;
+  school?: string;
+  degree?: string;
+  startDate?: string;
+  endDate?: string;
+  location?: string;
 }
 
 export interface ExperienceForm {
@@ -53,7 +54,7 @@ export interface ResumeSection<T, V = void, W = void> {
 }
 
 export interface Education extends EducationForm {
-  id: number;
+  id?: number;
 }
 
 export interface Experience extends ExperienceForm {
@@ -179,6 +180,13 @@ export class ResumeState {
   }
 
   @Selector()
+  static educationFormDetails(
+    state: ResumeStateModel,
+  ): EducationForm | undefined {
+    return state.sections.education.form.model;
+  }
+
+  @Selector()
   static educationList(state: ResumeStateModel): Education[] | undefined {
     return state.sections.education.list;
   }
@@ -232,36 +240,37 @@ export class ResumeState {
     });
   }
 
-  @Action(AddEducation)
-  addEducation({ getState, setState }: StateContext<ResumeStateModel>) {
-    const educationNewEntry = getState().sections.education.form
-      .model as Education;
-    const educationList =
-      (getState().sections.education.list as Education[]) || [];
+  @Action(SaveEducation)
+  saveEducation({ getState, setState }: StateContext<ResumeStateModel>) {
+    const sections = getState().sections;
+    const education = sections.education;
+    const isEditMode = education.ui?.isEditMode;
+    const editForm = education.form;
+
+    let educationList = (education.list as Education[]) || [];
+    let editChanges = !isEditMode
+      ? { ...editForm.model, id: new Date().getTime() }
+      : editForm.model;
+
+    if (isEditMode) {
+      educationList =
+        educationList.filter((education) => education.id !== editChanges?.id) ||
+        [];
+    }
+
+    setState(
+      produce((draft) => {
+        const educationDraft = draft.sections.education;
+        educationDraft.list = [...educationList, { ...editChanges }];
+        (educationDraft.ui as EducationUiState).isEducationFormVisible = false;
+        (educationDraft.ui as EducationUiState).isEditMode = false;
+      }),
+    );
 
     this.resetEducationForm();
-    setState({
-      ...getState(),
-      sections: {
-        ...getState().sections,
-        education: {
-          ...getState().sections.education,
-          ui: {
-            ...getState().sections.education.ui,
-            // should make a seperate dispatch to hide the form
-            isEducationFormVisible: false,
-            isEditMode: false,
-          },
-          list: [
-            ...educationList,
-            // TODO should add id generator
-            { ...educationNewEntry, id: new Date().getTime() },
-          ],
-        },
-      },
-    });
   }
 
+  // TODO should use action stream to handle this type of actions (UI actions) https://www.ngxs.io/recipes/style-guide#action-operations
   @Action(OpenEducationEdit)
   openEducationEdit(
     { getState, setState }: StateContext<ResumeStateModel>,

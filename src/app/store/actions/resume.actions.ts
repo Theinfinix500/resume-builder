@@ -1,3 +1,5 @@
+import { Education } from '../state/resume.state';
+
 export class LoadResumeList {
   static readonly type = '[RESUME] LoadResumeList';
 }
@@ -12,11 +14,15 @@ export class OpenEducationNewEntry {
 export class OpenEducationEdit {
   static readonly type = '[RESUME UI] EditEducation';
 
-  constructor(public educationId: number) {}
+  constructor(public educationId?: number) {}
 }
 
-export class AddEducation {
-  static readonly type = '[RESUME UI] AddEducation';
+export class SaveEducation {
+  static readonly type = '[RESUME UI] SaveEducation';
+}
+
+export class EditEducation {
+  static readonly type = '[RESUME UI] EditEducation';
 }
 
 export class HideEducationForm {

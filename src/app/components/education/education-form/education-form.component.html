@@ -64,15 +64,19 @@
         [outlined]="true"
         severity="danger"
       ></p-button>
-    } @else {
-      <p-button label="Save" [outlined]="true" (onClick)="addEducation()"></p-button>
     }
-
-    <p-button
-      label="Close"
-      [outlined]="true"
-      severity="secondary"
-      (onClick)="hideForm()"
-    ></p-button>
+    <div>
+      <p-button
+        label="Close"
+        [outlined]="true"
+        severity="secondary"
+        (onClick)="hideForm()"
+      ></p-button>
+      <p-button
+        label="Save"
+        [outlined]="true"
+        (onClick)="saveEducation()"
+      ></p-button>
+    </div>
   </div>
 </form>

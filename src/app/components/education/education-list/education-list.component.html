@@ -5,7 +5,7 @@
   } @else {
     <div class="list">
       @for (education of educationList$ | async; track education.id) {
-        <div class="row" (click)="editEducation(education.id)">
+        <div class="row" (click)="editEducation(education?.id)">
           <span>{{ education.school }}</span
           ><i class="pi pi-eye text-blue-500 text-xl"></i>
         </div>

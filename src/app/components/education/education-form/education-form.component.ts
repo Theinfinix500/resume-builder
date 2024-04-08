@@ -1,6 +1,6 @@
 import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { ResumesFacade } from '../../../store/facade/resumes.facade';
-import { Observable } from 'rxjs';
+import { combineLatest, Observable, switchMap, tap } from 'rxjs';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
@@ -26,13 +26,20 @@ export class EducationFormComponent {
   fb: FormBuilder = inject(FormBuilder);
   educationForm!: FormGroup;
   isEditMode$: Observable<boolean> = this.resumesFacade.isEditMode$;
+  isEditMode: boolean = false;
 
   ngOnInit(): void {
     this.initForm();
+    this.isEditMode$.pipe(
+      tap((isEditMode) => {
+        this.isEditMode = isEditMode;
+      }),
+    );
   }
 
   private initForm() {
     this.educationForm = this.fb.group({
+      id: '',
       school: '',
       degree: '',
       startDate: '',
@@ -45,7 +52,7 @@ export class EducationFormComponent {
     this.resumesFacade.hideEducationForm();
   }
 
-  addEducation() {
-    this.resumesFacade.addEducation();
+  saveEducation() {
+    this.resumesFacade.saveEducation();
   }
 }
