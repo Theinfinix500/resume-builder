@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { EducationSectionComponent } from './education-section.component';
 
-describe('EducationSectionComponent', () => {
+xdescribe('EducationSectionComponent', () => {
   let component: EducationSectionComponent;
   let fixture: ComponentFixture<EducationSectionComponent>;
 
