@@ -3,13 +3,9 @@ import { ExperienceSectionComponent } from './experience-section/experience-sect
 import { EducationSectionComponent } from './education-section/education-section.component';
 import { PersonalInfoSectionComponent } from './personal-info-section/personal-info-section.component';
 import { ResumesFacade } from '../../store/facade/resumes.facade';
-import {
-  Education,
-  EducationForm,
-  PersonalDetails,
-} from '../../store/state/resume.state';
-import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { Education, PersonalDetails } from '../../store/state/resume.state';
+import { Observable, tap } from 'rxjs';
+import { AsyncPipe, JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'rb-resume',
@@ -19,17 +15,25 @@ import { AsyncPipe } from '@angular/common';
     EducationSectionComponent,
     PersonalInfoSectionComponent,
     AsyncPipe,
+    JsonPipe,
   ],
   templateUrl: './resume.component.html',
   styleUrl: './resume.component.scss',
   encapsulation: ViewEncapsulation.None,
 })
 export class ResumeComponent {
+  showEducationList: boolean = false;
   resumesFacade: ResumesFacade = inject(ResumesFacade);
 
   personalDetails$: Observable<PersonalDetails | undefined> =
     this.resumesFacade.personalDetails$;
 
   educationList$: Observable<Education[] | undefined> =
-    this.resumesFacade.educationList$;
+    this.resumesFacade.educationList$.pipe(
+      tap((educationList) => {
+        this.showEducationList = educationList?.some(
+          (education) => education.isVisible,
+        ) as boolean;
+      }),
+    );
 }

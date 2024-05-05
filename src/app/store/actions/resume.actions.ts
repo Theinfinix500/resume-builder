@@ -28,3 +28,9 @@ export class EditEducation {
 export class HideEducationForm {
   static readonly type = '[RESUME UI] HideEducationForm';
 }
+
+export class ToggleEducation {
+  static readonly type = '[RESUME UI] ToggleEducation';
+  
+  constructor(public educationId: number) {}
+}

@@ -17,6 +17,7 @@ import {
   OpenEducationEdit,
   OpenEducationNewEntry,
   PrintResume,
+  ToggleEducation,
 } from '../actions/resume.actions';
 
 @Injectable({ providedIn: 'root' })
@@ -33,9 +34,9 @@ export class ResumesFacade {
           HideEducationForm,
         ),
       )
-      .subscribe(action => {
+      .subscribe((action) => {
         // TODO check how to implement this using actions$
-        switch(action) {
+        switch (action) {
           case action instanceof OpenEducationNewEntry:
             // isEducationFormVisible: true,
             // isEditMode: false,
@@ -87,5 +88,9 @@ export class ResumesFacade {
 
   hideEducationForm() {
     this.store.dispatch(HideEducationForm);
+  }
+
+  toggleEducation(educationId: number) {
+    this.store.dispatch(new ToggleEducation(educationId));
   }
 }

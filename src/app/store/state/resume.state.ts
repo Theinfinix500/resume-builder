@@ -9,6 +9,7 @@ import {
   OpenEducationEdit,
   OpenEducationNewEntry,
   PrintResume,
+  ToggleEducation,
 } from '../actions/resume.actions';
 import { PrintService } from '../../services/print.service';
 import { ResetForm, UpdateFormValue } from '@ngxs/form-plugin';
@@ -55,6 +56,7 @@ export interface ResumeSection<T, V = void, W = void> {
 
 export interface Education extends EducationForm {
   id?: number;
+  isVisible: boolean;
 }
 
 export interface Experience extends ExperienceForm {
@@ -127,6 +129,7 @@ export interface ResumeStateModel {
             startDate: 'June 2021',
             endDate: 'June 2023',
             location: 'Casablanca, Morocco',
+            isVisible: true,
           },
           {
             id: 2,
@@ -135,6 +138,7 @@ export interface ResumeStateModel {
             startDate: 'June 2021',
             endDate: 'June 2023',
             location: 'Casablanca, Morocco',
+            isVisible: false,
           },
         ],
         ui: {
@@ -249,8 +253,8 @@ export class ResumeState {
 
     let educationList = (education.list as Education[]) || [];
     let editChanges = !isEditMode
-      ? { ...editForm.model, id: new Date().getTime() }
-      : editForm.model;
+      ? { ...editForm.model, id: new Date().getTime(), isVisible: true }
+      : { ...editForm.model, isVisible: true };
 
     if (isEditMode) {
       educationList =
@@ -314,6 +318,34 @@ export class ResumeState {
             isEducationFormVisible: false,
           },
         },
+      },
+    });
+  }
+
+  @Action(ToggleEducation)
+  toggleEducation(
+    { getState, patchState }: StateContext<ResumeStateModel>,
+    { educationId }: ToggleEducation,
+  ) {
+    const educationList = getState().sections.education.list;
+    const educationById: Education | undefined = educationList?.find(
+      (education) => education.id === educationId,
+    );
+    const filteredEducationList: Education[] = educationList?.filter(
+      (education) => education.id !== educationId,
+    ) as Education[];
+
+    patchState({
+      sections: {
+        education: {
+          form: getState().sections.education.form,
+          list: [
+            ...filteredEducationList,
+            { ...educationById, isVisible: !educationById?.isVisible },
+          ],
+        },
+        experience: getState().sections.experience,
+        personalDetails: getState().sections.personalDetails,
       },
     });
   }

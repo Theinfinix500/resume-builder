@@ -8,10 +8,13 @@
 
     <div>
       @if (educationList$ | async; as educationList) {
-        <rb-education-section
-          [educationList]="educationList"
-        ></rb-education-section>
+        @if (showEducationList) {
+          <rb-education-section
+            [educationList]="educationList"
+          ></rb-education-section>
+        }
       }
+
       <rb-experience-section></rb-experience-section>
     </div>
   </div>

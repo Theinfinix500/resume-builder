@@ -7,7 +7,10 @@
       @for (education of educationList$ | async; track education.id) {
         <div class="row" (click)="editEducation(education?.id)">
           <span>{{ education.school }}</span
-          ><i class="pi pi-eye text-blue-500 text-xl"></i>
+          ><i (click)="toggleEducation($event, education?.id)"
+            class="pi text-blue-500 text-xl"
+            [ngClass]="{ 'pi-eye': education.isVisible, 'pi-eye-slash': !education.isVisible }"
+          ></i>
         </div>
       }
     </div>
