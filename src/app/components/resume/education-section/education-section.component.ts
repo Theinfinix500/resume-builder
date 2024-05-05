@@ -1,5 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
-import { Education, EducationForm } from '../../../store/state/resume.state';
+import { Education } from '../../../store/state/resume.state';
 
 @Component({
   selector: 'rb-education-section',

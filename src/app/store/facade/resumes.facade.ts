@@ -1,24 +1,23 @@
 import { inject, Injectable } from '@angular/core';
 import {
   Actions,
-  ofAction,
   ofActionDispatched,
   Select,
-  Store,
+  Store
 } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Resume } from '../../models/resume.model';
-import { Education, PersonalDetails, ResumeState } from '../state/resume.state';
 import {
-  SaveEducation,
   EditEducation,
   HideEducationForm,
   LoadResumeList,
   OpenEducationEdit,
   OpenEducationNewEntry,
   PrintResume,
+  SaveEducation,
   ToggleEducation,
 } from '../actions/resume.actions';
+import { Education, PersonalDetails, ResumeState } from '../state/resume.state';
 
 @Injectable({ providedIn: 'root' })
 export class ResumesFacade {

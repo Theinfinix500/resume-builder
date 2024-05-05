@@ -1,11 +1,11 @@
-import { Component, inject, ViewEncapsulation } from '@angular/core';
-import { ResumesFacade } from '../../../store/facade/resumes.facade';
-import { combineLatest, Observable, switchMap, tap } from 'rxjs';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { AsyncPipe } from '@angular/common';
+import { Component, inject, ViewEncapsulation } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
-import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { Observable, tap } from 'rxjs';
+import { ResumesFacade } from '../../../store/facade/resumes.facade';
 
 @Component({
   selector: 'rb-education-form',

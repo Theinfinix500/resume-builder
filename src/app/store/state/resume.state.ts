@@ -1,19 +1,19 @@
 import { inject, Injectable } from '@angular/core';
+import { ResetForm, UpdateFormValue } from '@ngxs/form-plugin';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
+import { produce } from 'immer';
 import { Resume } from '../../models/resume.model';
-import { RESUME_STATE_NAME } from '../state.name';
+import { PrintService } from '../../services/print.service';
 import {
-  SaveEducation,
   HideEducationForm,
   LoadResumeList,
   OpenEducationEdit,
   OpenEducationNewEntry,
   PrintResume,
+  SaveEducation,
   ToggleEducation,
 } from '../actions/resume.actions';
-import { PrintService } from '../../services/print.service';
-import { ResetForm, UpdateFormValue } from '@ngxs/form-plugin';
-import { produce } from 'immer';
+import { RESUME_STATE_NAME } from '../state.name';
 
 export interface FormStatus<T> {
   model?: T;

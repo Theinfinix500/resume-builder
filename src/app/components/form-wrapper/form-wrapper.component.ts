@@ -1,9 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { PersonalDetailsComponent } from '../personal-details/personal-details.component';
-import { ExperienceListComponent } from '../experience/experience-list/experience-list.component';
-import { EducationListComponent } from '../education/education-list/education-list.component';
 import { ButtonModule } from 'primeng/button';
 import { ResumesFacade } from '../../store/facade/resumes.facade';
+import { EducationListComponent } from '../education/education-list/education-list.component';
+import { ExperienceListComponent } from '../experience/experience-list/experience-list.component';
+import { PersonalDetailsComponent } from '../personal-details/personal-details.component';
 
 @Component({
   selector: 'rb-form-wrapper',

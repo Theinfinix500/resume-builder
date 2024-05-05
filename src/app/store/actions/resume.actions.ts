@@ -1,4 +1,3 @@
-import { Education } from '../state/resume.state';
 
 export class LoadResumeList {
   static readonly type = '[RESUME] LoadResumeList';

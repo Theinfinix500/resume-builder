@@ -1,10 +1,10 @@
+import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
-import { EducationFormComponent } from '../education-form/education-form.component';
-import { ResumesFacade } from '../../../store/facade/resumes.facade';
 import { Observable } from 'rxjs';
-import { AsyncPipe, NgClass } from '@angular/common';
+import { ResumesFacade } from '../../../store/facade/resumes.facade';
 import { Education } from '../../../store/state/resume.state';
+import { EducationFormComponent } from '../education-form/education-form.component';
 
 @Component({
   selector: 'rb-education-list',

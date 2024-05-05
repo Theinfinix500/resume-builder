@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { ResumesFacade } from './resumes.facade';
 import { NgxsModule, Store } from '@ngxs/store';
 import { LoadResumeList } from '../actions/resume.actions';
 import { ResumeState } from '../state/resume.state';
+import { ResumesFacade } from './resumes.facade';
 
 describe('ResumesFacade', () => {
   let resumeFacade: ResumesFacade;

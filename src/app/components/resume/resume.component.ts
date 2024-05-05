@@ -1,11 +1,11 @@
+import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, inject, ViewEncapsulation } from '@angular/core';
-import { ExperienceSectionComponent } from './experience-section/experience-section.component';
-import { EducationSectionComponent } from './education-section/education-section.component';
-import { PersonalInfoSectionComponent } from './personal-info-section/personal-info-section.component';
+import { Observable, tap } from 'rxjs';
 import { ResumesFacade } from '../../store/facade/resumes.facade';
 import { Education, PersonalDetails } from '../../store/state/resume.state';
-import { Observable, tap } from 'rxjs';
-import { AsyncPipe, JsonPipe } from '@angular/common';
+import { EducationSectionComponent } from './education-section/education-section.component';
+import { ExperienceSectionComponent } from './experience-section/experience-section.component';
+import { PersonalInfoSectionComponent } from './personal-info-section/personal-info-section.component';
 
 @Component({
   selector: 'rb-resume',
