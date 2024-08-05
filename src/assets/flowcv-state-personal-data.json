@@ -1,0 +1,714 @@
+{
+  "success": true,
+  "data": {
+    "resumes": [
+      {
+        "businessDetails": {},
+        "personalDetails": {
+          "birthday": {},
+          "photo": {
+            "shape": "round"
+          },
+          "showPlaceholder": false,
+          "detailsOrder": [
+            "displayEmail",
+            "phone",
+            "address",
+            "linkedIn",
+            "github"
+          ],
+          "fullName": "Abdelali Djebara",
+          "jobTitle": "Ingénieur Logiciel Frontend",
+          "displayEmail": "jbaraali18@gmail.com",
+          "phone": "+212649280235",
+          "imageIdToSave": "",
+          "address": "Casablanca, Maroc",
+          "website": "",
+          "websiteLink": "",
+          "social": {
+            "linkedIn": {
+              "link": "https://www.linkedin.com/in/djebara-abdelali/",
+              "display": "in/djebara-abdelali"
+            },
+            "github": {
+              "display": "github.com/theinfinix500",
+              "link": "https://github.com/theinfinix500"
+            }
+          }
+        },
+        "customization": {
+          "layout": {
+            "colsFromDetails": {
+              "top": "one",
+              "left": "two",
+              "right": "two"
+            },
+            "colWidthsFromDetails": {
+              "top": {
+                "leftWidth": 30,
+                "rightWidth": 70
+              },
+              "left": {
+                "leftWidth": 40,
+                "rightWidth": 60
+              },
+              "right": {
+                "leftWidth": 57,
+                "rightWidth": 43
+              }
+            },
+            "one": {
+              "colWidths": {
+                "dateLocationLeft": {},
+                "dateLocationRight": {},
+                "dateContentLocation": {}
+              },
+              "sectionDisplay": "dateLocationLeft"
+            },
+            "two": {
+              "sectionDisplay": "halfHalf",
+              "leftWidth": 50,
+              "rightWidth": 50,
+              "personalDetails": "top"
+            },
+            "mix": {
+              "columnWidths": {
+                "dateLocationLeft": {
+                  "left": 21,
+                  "right": 79
+                },
+                "dateLocationRight": {
+                  "left": 77,
+                  "right": 23
+                },
+                "dateContentLocation": {
+                  "left": 21,
+                  "middle": 62,
+                  "right": 17
+                }
+              },
+              "sectionDisplay": "dateLocationLeft",
+              "columnWidthMode": "manual",
+              "leftWidth": 50,
+              "rightWidth": 50,
+              "personalDetails": "top"
+            },
+            "detailsPosition": "top",
+            "selected": "one"
+          },
+          "entryLayout": {
+            "colWidths": {
+              "dateLocationLeft": {
+                "left": 20,
+                "right": 80
+              },
+              "dateLocationRight": {
+                "left": 76,
+                "right": 24
+              },
+              "dateContentLocation": {
+                "left": 21,
+                "middle": 61,
+                "right": 18
+              }
+            },
+            "titleAndSubtitleSize": "s",
+            "subtitleStyle": "bold",
+            "bodyIndentation": "0",
+            "dateLocationOpacity": true,
+            "displayMode": "dateLocationLeft",
+            "colMode": "manual"
+          },
+          "colors": {
+            "basic": {
+              "multi": {
+                "textColor": "#000000",
+                "accentColor": "#0e374e",
+                "backgroundColor": "#ffffff"
+              },
+              "multiCustom": {
+                "textColor": "#000000",
+                "accentColor": "#0e374e",
+                "backgroundColor": "#ffffff"
+              },
+              "selected": "single",
+              "single": "#0e374e",
+              "singleCustom": "#0e374e"
+            },
+            "advanced": {
+              "multi": {
+                "strong": {
+                  "textColor": "#FFFCF9",
+                  "accentColor": "#6772c5",
+                  "backgroundColor": "#121b5f"
+                },
+                "light": {
+                  "textColor": "#121b5f",
+                  "accentColor": "#121b5f",
+                  "backgroundColor": "#FFFCF9"
+                }
+              },
+              "multiCustom": {
+                "strong": {
+                  "textColor": "#FFFCF9",
+                  "accentColor": "#6772c5",
+                  "backgroundColor": "#121b5f"
+                },
+                "light": {
+                  "textColor": "#121b5f",
+                  "accentColor": "#121b5f",
+                  "backgroundColor": "#FFFCF9"
+                }
+              },
+              "selected": "multi",
+              "single": "#0e374e",
+              "singleCustom": "#0e374e"
+            },
+            "border": {
+              "selected": "single",
+              "single": "#0e374e",
+              "singleCustom": "#0e374e",
+              "width": "m",
+              "left": true,
+              "top": true,
+              "right": true,
+              "bottom": true
+            },
+            "mode": "advanced"
+          },
+          "sectionOrder": {
+            "one": {
+              "sectionsSorted": ["work", "education", "language", "skill"]
+            },
+            "two": {
+              "leftSectionsSorted": ["education", "language", "skill"],
+              "rightSectionsSorted": ["work"]
+            },
+            "mix": [
+              {
+                "left": ["work", "language"],
+                "right": ["education"]
+              },
+              "skill"
+            ]
+          },
+          "header": {
+            "photo": {
+              "show": false,
+              "grayscale": true,
+              "size": "m"
+            },
+            "photoPositionFromHeaderPosition": {
+              "left": "right",
+              "top": "center",
+              "right": "left"
+            },
+            "position": "center",
+            "accentuateName": true,
+            "detailsDisplayCenter": "icon",
+            "detailsDisplayLeftRight": "icon",
+            "nameSize": "m",
+            "detailsArrangement": "wrap",
+            "jobTitleSize": "l",
+            "jobTitleStyle": "normal",
+            "jobTitlePosition": "below"
+          },
+          "spacing": {
+            "marginVertical": "0",
+            "marginHorizontal": "0",
+            "fontSize": "2",
+            "lineHeight": "4",
+            "spacingFactor": "1"
+          },
+          "font": {
+            "selected": "serif",
+            "fontFamily": "Fira Sans"
+          },
+          "advanced": {
+            "listStyle": "bullet",
+            "linkIcon": "boxArrow",
+            "groupPromotions": false
+          },
+          "skillDisplay": {
+            "grid": {
+              "columns": "three",
+              "splitCommasIntoBullets": false
+            },
+            "level": {
+              "selected": "bar"
+            },
+            "selected": "grid",
+            "text": "bullet",
+            "subinfoItalic": false
+          },
+          "languageDisplay": {
+            "grid": {
+              "columns": "three",
+              "splitCommasIntoBullets": false
+            },
+            "level": {
+              "selected": "dots"
+            },
+            "selected": "bubble",
+            "text": "wrap",
+            "subinfoItalic": false
+          },
+          "interestDisplay": {
+            "grid": {
+              "columns": "three",
+              "splitCommasIntoBullets": false
+            },
+            "selected": "text",
+            "text": "bullet",
+            "subinfoItalic": false
+          },
+          "certificateDisplay": {
+            "grid": {
+              "columns": "three",
+              "splitCommasIntoBullets": false
+            },
+            "selected": "grid",
+            "text": "bullet",
+            "subinfoItalic": false
+          },
+          "regional": {
+            "format": "A4",
+            "dateDisplay": "DD/MM/YYYY",
+            "anonymous": false,
+            "monthFormat": "MMM",
+            "dateDelimiter": "/"
+          },
+          "heading": {
+            "style": "simple",
+            "capitalization": "uppercase",
+            "headingSize": "s",
+            "icons": "none"
+          },
+          "expert": {
+            "footer": {
+              "pages": false,
+              "name": false,
+              "email": false
+            },
+            "subTitlePlacement": "trySameLine",
+            "showProfileHeading": true
+          },
+          "border": {
+            "width": {
+              "line": "m",
+              "filled": "m",
+              "image": "m"
+            },
+            "selectedStyle": "none",
+            "searchMode": "ideas"
+          },
+          "background": {
+            "fullPage": {
+              "textColor": "#000000",
+              "accentColor": "#0e374e",
+              "backgroundColor": "#ffffff"
+            },
+            "header": {
+              "multi": {
+                "a": {
+                  "textColor": "#000",
+                  "accentColor": "#000",
+                  "backgroundColor": "#fff"
+                },
+                "b": {
+                  "textColor": "#000",
+                  "accentColor": "#000",
+                  "backgroundColor": "#fff"
+                }
+              },
+              "mode": "contrast",
+              "contrast": "#0e374e"
+            },
+            "leftCol": {
+              "multi": {
+                "a": {
+                  "textColor": "#000",
+                  "accentColor": "#000",
+                  "backgroundColor": "#fff"
+                },
+                "b": {
+                  "textColor": "#000",
+                  "accentColor": "#000",
+                  "backgroundColor": "#fff"
+                }
+              },
+              "mode": "contrast",
+              "contrast": "#0e374e"
+            },
+            "rightCol": {
+              "multi": {
+                "a": {
+                  "textColor": "#000",
+                  "accentColor": "#000",
+                  "backgroundColor": "#fff"
+                },
+                "b": {
+                  "textColor": "#000",
+                  "accentColor": "#000",
+                  "backgroundColor": "#fff"
+                }
+              },
+              "mode": "contrast",
+              "contrast": "#0e374e"
+            },
+            "selected": "header",
+            "selectedHelper": "header",
+            "fullPageMode": "accent",
+            "fullPageImageSearchMode": "ideas",
+            "headerImageSearchMode": "ideas"
+          },
+          "applyAccentColor": {
+            "name": false,
+            "headings": false,
+            "headingLine": true,
+            "dotsBarsBubbles": false,
+            "icons": false,
+            "dates": true,
+            "linkIcons": false
+          },
+          "educationDisplay": {
+            "degreeBeforeSchool": true
+          },
+          "workDisplay": {
+            "jobTitleBeforeEmployer": false
+          },
+          "declarationDisplay": {
+            "showHeading": true,
+            "position": "right",
+            "line": "solid"
+          },
+          "creativeNameFont": "bodyFont",
+          "unsplashImageHistory": [
+            {
+              "photoId": "xljtGZ2-P3Y",
+              "urlFull": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-1.2.1&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjEwMTg4M30",
+              "urlRegular": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjEwMTg4M30",
+              "urlThumb": "https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=200&fit=max&ixid=eyJhcHBfaWQiOjEwMTg4M30",
+              "photographerId": "dD4xvxNBI2Y",
+              "photographerFullName": "Nahil Naseer",
+              "photographerFirstName": "Nahil",
+              "photographerLastName": "Naseer",
+              "userHtmlLink": "https://unsplash.com/@nahilnaseer",
+              "width": 2565,
+              "height": 4560,
+              "dominantColors": [
+                "#1f2c2c",
+                "#5d9479",
+                "#3f6e5a",
+                "#86aa96",
+                "#587c6c",
+                "#2d5145",
+                "#3d574f",
+                "#304344",
+                "#485b5c",
+                "#748484"
+              ],
+              "brightness": 53
+            }
+          ],
+          "sharedTemplateId": "",
+          "customSkillSections": {}
+        },
+        "feedback": {
+          "comments": []
+        },
+        "_id": "6584519e31bea0c31101f551",
+        "userId": "6584519d31bea0c31101f54c",
+        "usingBusinessTemplateId": "",
+        "webToken": "264s0t0ae2",
+        "webResumeLive": false,
+        "webResumeDownloadBtn": true,
+        "webResumeSearchIndex": true,
+        "downloads": [
+          "2023-12-21T21:44:05.639Z",
+          "2023-12-21T21:55:07.399Z",
+          "2023-12-21T22:46:32.790Z",
+          "2023-12-22T08:05:36.645Z",
+          "2023-12-22T08:45:48.254Z"
+        ],
+        "title": "Abdelali Djebara Resume FR",
+        "order": 0,
+        "feedbackToken": "ofde6js9eo",
+        "feedbackEnabled": false,
+        "content": {
+          "work": {
+            "sectionType": "work",
+            "displayName": "Expériences Professionnelles",
+            "entries": [
+              {
+                "id": "M8-HIPHuEC4GDA3MeFAtn",
+                "isNewEntry": false,
+                "employer": "SQLI",
+                "employerLink": "",
+                "jobTitle": "INGÉNIEUR LOGICIEL FRONTEND",
+                "startDate": {
+                  "month": "10",
+                  "year": "2022",
+                  "onlyYear": false,
+                  "hide": false,
+                  "ongoing": false
+                },
+                "endDate": {
+                  "month": null,
+                  "year": null,
+                  "onlyYear": false,
+                  "hide": false,
+                  "ongoing": true,
+                  "customOngoingWord": "Present"
+                },
+                "description": "<p><u>Client</u><strong> NTN</strong></p><p>NTN est l'un des plus grands producteurs mondiaux de roulements, offrant une gamme variée de produits tels que des roulements à billes, des composants automobiles et industriels connexes. Je contribue au magasin B2B Ecommerce basé sur SAP Storefront.</p><p><br /></p><p><u>Responsabilités</u></p><ul><li>Contribuer à l'amélioration des fonctionnalités Frontend.</li><li>Optimiser et améliorer le code des pages existantes.</li><li>Intégrer des interfaces utilisateur Frontend en accord avec les besoins de l'entreprise.</li><li>Participer aux réunions Agiles.</li><li>Identifier et résoudre les problèmes et les anomalies logiciels.</li></ul><p><br /></p><p><u>Stack Technique</u> Angular 14, RxJS, TypeScript, JavaScript, SCSS, Git, Azure Devops, SAP Spartacus Storefront.</p><p><br /></p><p><u>Client</u><strong> INDRA</strong></p><p>La plateforme INDRA (une filiale de Renault) recycle des véhicules éligibles à des fins de recyclage, dans le but de bénéficier d'une incitation gouvernementale pour le recyclage des véhicules.</p><p><br /></p><p><u>Responsabilités</u></p><ul><li>Contribuer à l'amélioration des fonctionnalités Frontend.</li><li>Optimiser et améliorer le code des pages existantes par le biais de refactoring.</li><li>Concevoir des interfaces utilisateur Frontend en accord avec les besoins de l'entreprise.</li><li>Participer aux cérémonies Agiles.</li><li>Résoudre les problèmes et les bugs logiciels.</li></ul><p><br /></p><p><u>Stack Technique</u> Angular 16, RxJS, NX, TypeScript, JavaScript, Tailwind CSS, SCSS, Git, Jira, Gitlab, AWS.</p><p><br /></p><p><u>Client</u><strong> TRESCAL </strong></p><p>Plateforme Ecommerce B2B du client Trescal, leader mondial des services d'étalonnage.</p><p><br /></p><p><u>Responsabilités</u></p><ul><li>Développement de nouvelles fonctionnalités côté Frontend.</li><li>Participation aux réunions Agiles (planification des sprints, réunion quotidienne, etc.).</li><li>Correction de bugs.</li><li>Refactoring du code des pages existantes.</li><li>Création d'interfaces utilisateur Frontend en fonction des besoins métier.</li><li>Suivi des demandes d'assistance (Jira).</li></ul><p><br /></p><p><u>Stack Technique</u> Angular 15, RxJS, NGXS, TypeScript, JavaScript, Tailwind CSS, SCSS, Storybook, Git, Jira, Azure</p>",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-22T08:43:07.292Z"
+              },
+              {
+                "id": "h3P9EC1jvZn5ExBUnVUU6",
+                "isNewEntry": false,
+                "employer": "LEYTON",
+                "employerLink": "",
+                "jobTitle": "INGÉNIEUR LOGICIEL FRONTEND",
+                "startDate": {
+                  "month": "12",
+                  "year": "2021",
+                  "onlyYear": false,
+                  "hide": false,
+                  "ongoing": false
+                },
+                "endDate": {
+                  "month": "10",
+                  "year": "2022",
+                  "onlyYear": false,
+                  "hide": false,
+                  "ongoing": false,
+                  "customOngoingWord": "present"
+                },
+                "description": "<p>Market Risk Platform (<strong>MRP</strong>) est un outil interne utilisé par les consultants de Leyton pour évaluer et calculer la solvabilité des clients de Leyton. Cela implique d'attribuer un score aux clients de Leyton et de gérer le risque grâce à des calculs de solvabilité. De plus, elle détermine l'éligibilité ou la confirmation pour le crédit Leyton. Le logiciel s'appuie sur SalesForce comme source de données pour les calculs.</p><p><br /></p><p><u>Responsabilités</u></p><ul><li>Mettre en œuvre l'architecture du projet côté Frontend.</li><li>Intégrer le design Figma dans le framework Angular.</li><li>Rédiger la documentation technique.</li><li>Analyser et cadrer les besoins des clients.</li><li>Implémenter la \"Gestion de l'État\" en utilisant NGXS.</li><li>Participer aux cérémonies Agiles.</li></ul><p><br /></p><p><u>Stack Technique</u><strong> </strong>Angular 13, TailwindCSS, Sass, CSS3, HTML5, Javascript, Typescript, Angular Material, PrimeNG, GitLab, GitLab Cl/CD, Docker, SonarQube, Jira, Scrum.</p><p><br /></p><p><strong>NRJ-OCR</strong> est un outil interne de Leyton conçu pour automatiser la vérification et la validation de documents. Son objectif principal est de générer des certificats CEE sans erreur en éliminant tout risque d'erreur humaine potentielle.</p><p><br /></p><p><u>Responsabilités</u></p><ul><li>Mettre en œuvre l'architecture du projet côté Frontend.</li><li>Étude et faisabilité de la conception UI/UX.</li><li>Intégrer la conception UI/UX.</li><li>Partager des idées pour améliorer l'outil.</li><li>Participer aux cérémonies Agiles (Scrum).</li><li>Collaborer avec l'équipe backend et l'équipe OCR.</li></ul><p><br /></p><p><u>Stack Technique</u><strong> </strong>Angular 13, TailwindCSS, Sass, CSS3, HTML5, Javascript, Typescript, Angular Material, PrimeNG, GitLab, GitLab Cl/CD, Docker, SonarQube, Jira, Scrum.</p>",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-22T08:43:43.019Z"
+              },
+              {
+                "id": "SorlOxHutd9eRR1Sg12jE",
+                "isNewEntry": false,
+                "employer": "GENERAFI",
+                "employerLink": "",
+                "jobTitle": "FRONTEND DEVELOPER",
+                "startDate": {
+                  "month": "10",
+                  "year": "2019",
+                  "onlyYear": false,
+                  "hide": false,
+                  "ongoing": false
+                },
+                "endDate": {
+                  "month": "12",
+                  "year": "2021",
+                  "onlyYear": false,
+                  "hide": false,
+                  "ongoing": false,
+                  "customOngoingWord": "present"
+                },
+                "description": "<p><strong>INEO </strong>est un logiciel ERP orienté comptabilité en tant que service (SaaS) qui facilite la déclaration électronique des impôts auprès de l'administration marocaine. Le logiciel propose des fonctionnalités telles que la gestion de trésorerie avec synchronisation bancaire et offre un espace dédié pour les tâches comptables.</p><p><br /></p><p><u>Responsabilités</u></p><ul><li>Gestion technique en Angular.</li><li>Collaboration avec l'équipe backend.</li><li>Examen du code des membres de l'équipe.</li><li>Aidé à l'intégration des nouveaux collaborateurs et des stagiaires.</li><li>Travail dans un environnement Agile (Scrum).</li><li>Automatisation des déploiements Frontend avec Azure DevOps.</li><li>Implémentation de nombreuses fonctionnalités telles que (kanban, authentification biométrique, téléchargement, etc.).</li><li>Maintenance de la bibliothèque de composants de l'entreprise (~15 composants).</li></ul><p><br /></p><p><u>Stack Technique</u><strong> </strong>Angular 8+, Sass, CSS3, HTML5, Javascript, Typescript,</p><p>Nebular, Azure DevOps, Material Angular, PrimeNG,</p><p>Firebase, Ionic 4, Bitbucket, Jira, ng-packagr.</p>",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-22T08:35:06.621Z"
+              }
+            ],
+            "iconKey": "briefcase",
+            "disableAutoSort": true
+          },
+          "education": {
+            "sectionType": "education",
+            "displayName": "Éducation",
+            "entries": [
+              {
+                "id": "JK_cs8nSzSFNKZagpbfF-",
+                "isNewEntry": false,
+                "school": "FST Settat",
+                "schoolLink": "",
+                "degree": "Master",
+                "startDate": {
+                  "month": null,
+                  "year": "2019",
+                  "onlyYear": true,
+                  "hide": false,
+                  "ongoing": false
+                },
+                "endDate": {
+                  "month": null,
+                  "year": "2021",
+                  "onlyYear": true,
+                  "hide": false,
+                  "ongoing": false,
+                  "customOngoingWord": "present"
+                },
+                "description": "<p>Management des Systèmes d'Information</p>",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-22T08:35:58.481Z"
+              },
+              {
+                "id": "sXKu-WnK46XN90DsYx9sy",
+                "isNewEntry": false,
+                "school": "FST Settat",
+                "schoolLink": "",
+                "degree": "Licence",
+                "startDate": {
+                  "month": null,
+                  "year": "2018",
+                  "onlyYear": true,
+                  "hide": false,
+                  "ongoing": false
+                },
+                "endDate": {
+                  "month": null,
+                  "year": "2019",
+                  "onlyYear": true,
+                  "hide": false,
+                  "ongoing": false,
+                  "customOngoingWord": "present"
+                },
+                "description": "<p>Administration de Bases de Données et Technologies Web</p>",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-22T08:37:12.131Z"
+              }
+            ],
+            "iconKey": "graduation-cap",
+            "disableAutoSort": true
+          },
+          "language": {
+            "sectionType": "language",
+            "displayName": "Langues",
+            "entries": [
+              {
+                "id": "KUFbIssm0-M3KTNgsY_sk",
+                "isNewEntry": false,
+                "language": "Anglais",
+                "level": "4",
+                "info": "Opérationnel",
+                "showPlaceholder": false,
+                "isHidden": false,
+                "updated_at": "2023-12-22T08:38:58.119Z"
+              },
+              {
+                "id": "jVZBOxyMVsa8V95xXxelD",
+                "isNewEntry": false,
+                "language": "Francais",
+                "level": "4",
+                "info": "Opérationnel",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-22T08:39:06.751Z"
+              },
+              {
+                "id": "f2LZPukPsvQYBvMBPRErg",
+                "isNewEntry": false,
+                "language": "Arabe",
+                "level": "5",
+                "info": "Langue maternelle",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-22T08:39:22.097Z"
+              }
+            ],
+            "iconKey": "earth-americas"
+          },
+          "skill": {
+            "sectionType": "skill",
+            "displayName": "COMPÉTENCES TECHNIQUES",
+            "entries": [
+              {
+                "id": "lcaxmbtlryx7ZLz107eDT",
+                "isNewEntry": false,
+                "skill": "Langages de Programmation et Web",
+                "level": "5",
+                "info": "JavaScript, TypeScript, WEB APIs (DOM, Communication APIs,\nRestful), HTML, CSS, JSON, XML",
+                "showPlaceholder": false,
+                "isHidden": false,
+                "updated_at": "2023-12-22T08:39:52.965Z"
+              },
+              {
+                "id": "_CZ5MJ2jFxxzCaEDaAeKZ",
+                "isNewEntry": false,
+                "skill": "Markup Languages",
+                "level": "5",
+                "info": "HTML, CSS, JSON, XML",
+                "showPlaceholder": false,
+                "isHidden": true,
+                "updated_at": "2023-12-21T21:52:47.696Z"
+              },
+              {
+                "id": "zTQGfjC9prHRF1EfbDVIM",
+                "isNewEntry": false,
+                "skill": "Frameworks et Bibliothèques",
+                "level": "5",
+                "info": "Angular, React, Bootstrap, SCSS, TailwindCSS, NX Mono Repo,\nNGRX, NGXS, Firebase, Strapi, Spartacus Storefront, Cypress, ESLint, Unit Testing (Jasmine, Karma, Jest), NPM, Yarn",
+                "showPlaceholder": false,
+                "isHidden": false,
+                "updated_at": "2023-12-22T08:40:50.844Z"
+              },
+              {
+                "id": "jATb-GkCRU8wY8o4biEb7",
+                "isNewEntry": false,
+                "skill": "Build Tools",
+                "level": "5",
+                "info": "Webpack, Vite",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-21T20:45:52.492Z",
+                "isHidden": true
+              },
+              {
+                "id": "JctEzOfwbMPMa9Cs7xCbO",
+                "isNewEntry": false,
+                "skill": "Testing Tools And Libraries",
+                "level": "5",
+                "info": "End To End Testing (Cypress), ESLint, Unit Testing (Jasmine, Karma)",
+                "showPlaceholder": false,
+                "isHidden": true,
+                "updated_at": "2023-12-21T21:52:12.563Z"
+              },
+              {
+                "id": "5ttgQu49YoE9FZ0LzCWny",
+                "isNewEntry": false,
+                "skill": "Outils de Contrôle de Version et DevOps",
+                "level": "5",
+                "info": "Git, GitHub, GitLab, BitBucket, Azure Devops, AWS, Docker, Docker-Compose, Jenkins",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-22T08:40:17.574Z"
+              },
+              {
+                "id": "KpqXtt6Wp06zbspCv_Zn4",
+                "isNewEntry": false,
+                "skill": "Dependency Management Tools",
+                "level": "5",
+                "info": "NPM, Yarn",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-21T20:46:32.183Z",
+                "isHidden": true
+              },
+              {
+                "id": "9ewwGe0BR14fQcVSYfxYC",
+                "isNewEntry": false,
+                "skill": "IDE",
+                "level": "5",
+                "info": "Visual Studio Code, Sublime, WebStorm",
+                "showPlaceholder": false,
+                "updated_at": "2023-12-21T20:46:44.470Z",
+                "isHidden": true
+              }
+            ],
+            "iconKey": "head-side-brain"
+          }
+        },
+        "languageCode": "en",
+        "schemaVersion": "4",
+        "lastChangeAt": "2024-01-26T10:49:18.191Z",
+        "createdAt": "2023-12-21T14:54:22.266Z",
+        "updatedAt": "2024-01-26T10:49:18.206Z",
+        "__v": 6,
+        "id": "6584519e31bea0c31101f551"
+      }
+    ]
+  },
+  "error": "",
+  "code": 200
+}

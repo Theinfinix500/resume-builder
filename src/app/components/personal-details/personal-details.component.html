@@ -1,0 +1,31 @@
+<div class="form-card">
+  <h2>Personal Details</h2>
+  <form
+    class="p-fluid"
+    [formGroup]="personalDetailsForm"
+    ngxsForm="resumes.sections.personalDetails.form"
+    [ngxsFormDebounce]="-1"
+  >
+    <div class="field">
+      <label htmlFor="fullName">Full name </label>
+      <input pInputText id="fullName" type="text" formControlName="fullName" />
+    </div>
+    <div class="field">
+      <label htmlFor="email">Email</label>
+      <input pInputText id="email" type="text" formControlName="email" />
+    </div>
+    <div class="field">
+      <label htmlFor="phoneNumber">Phone number</label>
+      <input
+        pInputText
+        id="phoneNumber"
+        type="text"
+        formControlName="phoneNumber"
+      />
+    </div>
+    <div class="field">
+      <label htmlFor="address">Address</label>
+      <input pInputText id="address" type="text" formControlName="address" />
+    </div>
+  </form>
+</div>

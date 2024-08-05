@@ -1,0 +1,21 @@
+<div class="education-info-section resume-section">
+  <h3 class="header-text">Education</h3>
+  @for (education of educationList; track education.id) {
+    @if (education.isVisible) {
+      <div class="education-info">
+        <div class="education-info-group">
+          <p class="dates">
+            {{ education?.startDate }}<span> – </span>{{ education?.endDate }}
+          </p>
+          <p>{{ education?.location }}</p>
+        </div>
+        <div class="education-info-group">
+          <p class="education-info-schoolName">
+            {{ education?.school }}
+          </p>
+          <p class="education-info-degree">{{ education?.degree }}</p>
+        </div>
+      </div>
+    }
+  }
+</div>

@@ -1,0 +1,22 @@
+<div class="personal-info">
+  <h1 class="resume-name">{{ personalDetails?.fullName }}</h1>
+  <div class="contact-info">
+    @if (personalDetails?.email) {
+      <div>
+        <i class="pi pi-envelope"></i><span>{{ personalDetails?.email }}</span>
+      </div>
+    }
+    @if (personalDetails?.phoneNumber) {
+      <div>
+        <i class="pi pi-phone"></i
+        ><span>{{ personalDetails?.phoneNumber }}</span>
+      </div>
+    }
+    @if (personalDetails?.address) {
+      <div>
+        <i class="pi pi-map-marker"></i
+        ><span>{{ personalDetails?.address }}</span>
+      </div>
+    }
+  </div>
+</div>
