@@ -5,6 +5,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { Observable, tap } from 'rxjs';
+import { EducationFacade } from '../../../store/facade/education.facade';
 import { ResumesFacade } from '../../../store/facade/resumes.facade';
 
 @Component({
@@ -22,6 +23,7 @@ import { ResumesFacade } from '../../../store/facade/resumes.facade';
   encapsulation: ViewEncapsulation.None,
 })
 export class EducationFormComponent {
+  educationFacade: EducationFacade = inject(EducationFacade);
   resumesFacade: ResumesFacade = inject(ResumesFacade);
   fb: FormBuilder = inject(FormBuilder);
   educationForm!: FormGroup;
@@ -49,10 +51,10 @@ export class EducationFormComponent {
   }
 
   hideForm() {
-    this.resumesFacade.hideEducationForm();
+    this.educationFacade.hideEducationForm();
   }
 
   saveEducation() {
-    this.resumesFacade.saveEducation();
+    this.educationFacade.saveEducation();
   }
 }

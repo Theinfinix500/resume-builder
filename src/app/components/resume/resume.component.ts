@@ -1,6 +1,7 @@
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { Component, inject, ViewEncapsulation } from '@angular/core';
 import { Observable, tap } from 'rxjs';
+import { EducationFacade } from '../../store/facade/education.facade';
 import { ResumesFacade } from '../../store/facade/resumes.facade';
 import { Education, PersonalDetails } from '../../store/state/resume.state';
 import { EducationSectionComponent } from './education-section/education-section.component';
@@ -24,12 +25,13 @@ import { PersonalInfoSectionComponent } from './personal-info-section/personal-i
 export class ResumeComponent {
   showEducationList: boolean = false;
   resumesFacade: ResumesFacade = inject(ResumesFacade);
+  educationFacade: EducationFacade = inject(EducationFacade);
 
   personalDetails$: Observable<PersonalDetails | undefined> =
     this.resumesFacade.personalDetails$;
 
   educationList$: Observable<Education[] | undefined> =
-    this.resumesFacade.educationList$.pipe(
+    this.educationFacade.educationList$.pipe(
       tap((educationList) => {
         this.showEducationList = educationList?.some(
           (education) => education.isVisible,

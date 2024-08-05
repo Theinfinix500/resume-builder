@@ -2,7 +2,7 @@ import { AsyncPipe, NgClass } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Observable } from 'rxjs';
-import { ResumesFacade } from '../../../store/facade/resumes.facade';
+import { EducationFacade } from '../../../store/facade/education.facade';
 import { Education } from '../../../store/state/resume.state';
 import { EducationFormComponent } from '../education-form/education-form.component';
 
@@ -14,23 +14,23 @@ import { EducationFormComponent } from '../education-form/education-form.compone
   styleUrl: './education-list.component.scss',
 })
 export class EducationListComponent {
-  resumesFacade: ResumesFacade = inject(ResumesFacade);
+  educationFacade: EducationFacade = inject(EducationFacade);
 
   isEducationFormVisible$: Observable<boolean> =
-    this.resumesFacade.isEducationFormVisible$;
+    this.educationFacade.isEducationFormVisible$;
   educationList$: Observable<Education[] | undefined> =
-    this.resumesFacade.educationList$;
+    this.educationFacade.educationList$;
 
   addNewEducation() {
-    this.resumesFacade.openEducationNewEntry();
+    this.educationFacade.openEducationNewEntry();
   }
 
   toggleEducation(event: Event, educationId?: number) {
     event.stopPropagation();
-    this.resumesFacade.toggleEducation(educationId as number);
+    this.educationFacade.toggleEducation(educationId as number);
   }
 
   editEducation(educationId?: number) {
-    this.resumesFacade.openEducationEdit(educationId);
+    this.educationFacade.openEducationEdit(educationId);
   }
 }

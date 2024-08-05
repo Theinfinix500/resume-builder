@@ -1,23 +1,14 @@
 import { inject, Injectable } from '@angular/core';
-import {
-  Actions,
-  ofActionDispatched,
-  Select,
-  Store
-} from '@ngxs/store';
+import { Actions, ofActionDispatched, Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { Resume } from '../../models/resume.model';
 import {
-  EditEducation,
   HideEducationForm,
-  LoadResumeList,
   OpenEducationEdit,
   OpenEducationNewEntry,
-  PrintResume,
-  SaveEducation,
-  ToggleEducation,
-} from '../actions/resume.actions';
-import { Education, PersonalDetails, ResumeState } from '../state/resume.state';
+} from '../actions/education.actions';
+import { LoadResumeList, PrintResume } from '../actions/resume.actions';
+import { PersonalDetails, ResumeState } from '../state/resume.state';
 
 @Injectable({ providedIn: 'root' })
 export class ResumesFacade {
@@ -48,15 +39,6 @@ export class ResumesFacade {
   @Select(ResumeState.personalDetails) personalDetails$!: Observable<
     PersonalDetails | undefined
   >;
-  @Select(ResumeState.educationList) educationList$!: Observable<
-    Education[] | undefined
-  >;
-  @Select(ResumeState.educationFormDetails) educationFormDetails$!: Observable<
-    Education[] | undefined
-  >;
-
-  @Select(ResumeState.isEducationFormVisible)
-  isEducationFormVisible$!: Observable<boolean>;
 
   @Select(ResumeState.isEditMode)
   isEditMode$!: Observable<boolean>;
@@ -67,29 +49,5 @@ export class ResumesFacade {
 
   print() {
     this.store.dispatch(PrintResume);
-  }
-
-  openEducationNewEntry() {
-    this.store.dispatch(OpenEducationNewEntry);
-  }
-
-  openEducationEdit(educationId?: number) {
-    this.store.dispatch(new OpenEducationEdit(educationId));
-  }
-
-  saveEducation() {
-    this.store.dispatch(SaveEducation);
-  }
-
-  editEducation() {
-    this.store.dispatch(EditEducation);
-  }
-
-  hideEducationForm() {
-    this.store.dispatch(HideEducationForm);
-  }
-
-  toggleEducation(educationId: number) {
-    this.store.dispatch(new ToggleEducation(educationId));
   }
 }

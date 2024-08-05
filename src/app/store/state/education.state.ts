@@ -4,14 +4,13 @@ import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { produce } from 'immer';
 import { Resume } from '../../models/resume.model';
 import { PrintService } from '../../services/print.service';
-import { LoadResumeList, PrintResume } from '../actions/resume.actions';
 
 import {
-  HideEducationForm,
-  OpenEducationEdit,
-  OpenEducationNewEntry,
-  SaveEducation,
-  ToggleEducation,
+    HideEducationForm,
+    OpenEducationEdit,
+    OpenEducationNewEntry,
+    SaveEducation,
+    ToggleEducation,
 } from '../actions/education.actions';
 import { RESUME_STATE_NAME } from '../state.name';
 
@@ -169,19 +168,9 @@ export interface ResumeStateModel {
   },
 })
 @Injectable()
-export class ResumeState {
+export class EducationState {
   printService: PrintService = inject(PrintService);
   store: Store = inject(Store);
-
-  @Selector()
-  static resumes(state: ResumeStateModel) {
-    return state.resumes;
-  }
-
-  @Selector()
-  static personalDetails(state: ResumeStateModel): PersonalDetails | undefined {
-    return state.sections.personalDetails.form.model;
-  }
 
   @Selector()
   static educationFormDetails(
@@ -203,23 +192,6 @@ export class ResumeState {
   @Selector()
   static isEditMode(state: ResumeStateModel): boolean | undefined {
     return state.sections.education?.ui?.isEditMode;
-  }
-
-  @Action(LoadResumeList)
-  loadAllResumes({ getState, setState }: StateContext<ResumeStateModel>) {
-    setState({
-      ...getState(),
-      resumes: [
-        {
-          name: 'Resume No 1',
-        },
-      ],
-    });
-  }
-
-  @Action(PrintResume)
-  printResume() {
-    this.printService.printTemplate();
   }
 
   @Action(OpenEducationNewEntry)
